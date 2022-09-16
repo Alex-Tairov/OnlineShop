@@ -1,0 +1,68 @@
+﻿
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+        <li class="nav-item">
+            <h6>@User.Identity.Name</h6>
+        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Account" asp-controller="Account" asp-action="Logout">Выход</a>
+                        </li> }
+                                    else
+                                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Account" asp-controller="Account" asp-action="Login">Вход</a>
+                        </li>}
+
+                    @if (User.IsInRole("Admin"))
+                    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Order" asp-action="Index">Администратор</a>
+        </li>}
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Favorite" asp-action="Index">Избранное @await Component.InvokeAsync("CalcFavoriteProductsCount")</a>
+                       
+                    </li>
+                   
+                </ul>
+            </div>
+
+            <form method="post">
+                <div class="container">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <input type="text" class="form-control" name="searchName" id="formGroupExampleInput" placeholder="Поиск">
+                        </li>
+                        <li class="nav-item">
+                            <button class="img-thumbnail" type="submit" asp-area="" asp-controller="Home" asp-action="Search"><img src="https://img.icons8.com/metro/2x/search.png" height="28" width="28" /></button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+            <div>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="visually-hidden" asp-area="" asp-controller="Cart" asp-action="Index"><img class="figure-img" img src="/images/cart.png" height="60" width="60" /></a>
+                        <span class="badge bg-warning">@await Component.InvokeAsync("Cart")</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

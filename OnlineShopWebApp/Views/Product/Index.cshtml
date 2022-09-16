@@ -1,0 +1,23 @@
+﻿@model ProductViewModel
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <img class="card-img-top" src="@Model.ImagePath">
+        <div class="card-body">
+            <h5>@Model.Name</h5>
+            <h5>@Model.Cost руб.</h5>
+            <p>@Model.Description</p>
+            <a class="btn btn-success" asp-area="" asp-controller="Cart" 
+               asp-action="Add" asp-route-productId="@Model.Id" role="button">Добавить в корзину</a>
+            <a class="btn btn-primary" asp-area="" asp-controller="Home" 
+               asp-action="Index" role="button">Продолжить покупки</a>
+            <div>
+                <a class="btn btn-warning" type="radio" asp-area="" asp-controller="Favorite"
+                   asp-action="Add" asp-route-productId="@Model.Id" role="button">В избранное</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
