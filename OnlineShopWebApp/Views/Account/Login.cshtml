@@ -24,11 +24,11 @@
             </label>
             <br />
             <div>
-                <button type="submit"
-                        asp-controller="Account"
-                        asp-action="Login">
-                    Войти
-                </button>
+            
+                <a class="btn btn-outline-primary"
+                   asp-area="" asp-controller="Account"
+                   asp-action="Login" role="button">Войти</a>
+
                 <a class="btn btn-outline-primary"
                    asp-area="" asp-controller="home"
                    asp-action="index" role="button">Вернуться</a>

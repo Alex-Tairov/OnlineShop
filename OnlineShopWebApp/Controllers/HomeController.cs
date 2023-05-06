@@ -1,13 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using OnlineShop.Db;
 using OnlineShopWebApp.Helpers;
-using OnlineShopWebApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OnlineShopWebApp.Controllers
 {
